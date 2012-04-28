@@ -1,0 +1,43 @@
+<head>
+  <title>commuter</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+  <div class="main">
+    <h1>Para</h1>
+    <p>
+      <label for="start">Start</label>
+      <input id="start" type="text" name="start" placeholder="Starting point" />
+    </p>
+    <p>
+      <label for="end">End</label>
+      <input id="end" type="text" name="end" placeholder="Destination" />
+    </p>
+    <button class="search">Search</button>
+  </div>
+
+  <div class="places">
+    Available places: {{#each places}} {{name}}, {{/each}}
+  </div>
+
+  <div class="directions">
+    {{#if directions}}
+      <p>Route from {{start}} to {{end}}</p>
+      <ul>
+      {{#each directions}}
+        <li>{{> direction}}</li>
+      {{/each}}
+      </ul>
+    {{/if}}
+  </div>
+</template>
+
+<template name="direction">
+  <div class="direction">
+    <span class="name">{{name}}</span>
+  </div>
+</template>
